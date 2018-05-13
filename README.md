@@ -9,11 +9,31 @@ Setup for my thinkpad x220 after new OS installation
 
 ```sudo apt-get install thinkfan```
 
-### 3) Enable fan control
+### 3) Create this file
+
+```sudo nano /etc/modprobe.d/thinkfan.conf```
+
+### 4) Add this line to /etc/modprobe.d/thinkfan.conf
+
+```options thinkpad_acpi fan_control=1```
+
+### 5) Activate the command
+
+```modprobe thinkpad_acpi```
+
+### 6) Edit default thinkfan
+
+```nano -w /etc/default/thinkfan```
+
+### 7) Make START to yes. If it isn't exist, add.
+
+```START=yes```
+
+### 8) Enable fan control
 
 ```sudo systemctl enable thinkfan.service```
 
-### 4) Add the following lines to enable the proper sensors in the X220:
+### 9) Add the following lines to enable the proper sensors in the X220:
 
 "tp_fan /proc/acpi/ibm/fan
 
@@ -21,11 +41,24 @@ hwmon /sys/class/thermal/thermal_zone0/temp"
 
 ```sudo nano -w /etc/thinkfan.conf```
 
-### 5) See sensor readings with the following command:
+My fan config: 
+
+```
+(0,     0,      40)
+(1,     40,     60)
+(2,     60,     65)
+(3,     65,     70)
+(4,     70,     75)
+(5,     75,     80)
+(7,     80,     32767)
+```
+
+
+### 10) See sensor readings with the following command:
 
 ```sensors```
 
-### 6) Install TLP for better battery optimization
+### 11) Install TLP for better battery optimization
 
 ```
 sudo add-apt-repository ppa:linrunner/tlp
