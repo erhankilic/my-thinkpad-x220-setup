@@ -65,3 +65,8 @@ sudo add-apt-repository ppa:linrunner/tlp
 sudo apt-get update
 sudo apt-get install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms 
 ```
+
+### 12) Install Powertop for further optimization
+```
+sudo apt install powertop
+```
